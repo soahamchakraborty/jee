@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Physics Class 11 Syllabus Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9ff;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .chapter {
+      background-color: #fff;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 800px;
+    }
+
+    .chapter h2 {
+      margin-bottom: 10px;
+      color: #34495e;
+    }
+
+    label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    #progressContainer {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #e0e0e0;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 25px;
+    }
+
+    #progressBar {
+      height: 100%;
+      background-color: #4CAF50;
+      width: 0%;
+      transition: width 0.4s ease;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      text-decoration: none;
+      color: #2980b9;
+      font-weight: bold;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Physics Class 11 Syllabus</h1>
+
+  <div id="progressContainer">
+    <div id="progressBar">0%</div>
+  </div>
+
+  <div id="syllabus"></div>
+
+  <a href="index.html" class="back">← Back to Home</a>
+
+  <script>
+    let totalTopics = 0;
+  
+    function updateDashboard() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const checked = [...checkboxes].filter(cb => cb.checked).length;
+      const percent = Math.round((checked / totalTopics) * 100);
+      const progressBar = document.getElementById("progressBar");
+      progressBar.style.width = `${percent}%`;
+      progressBar.textContent = `${percent}%`;
+    }
+  
+    // Save the state of checkboxes to localStorage
+    function saveProgress() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const progress = [...checkboxes].map(cb => cb.checked);
+      localStorage.setItem("progress", JSON.stringify(progress));
+    }
+  
+    // Load the saved progress from localStorage
+    function loadProgress() {
+      const savedProgress = JSON.parse(localStorage.getItem("progress"));
+      if (savedProgress) {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        savedProgress.forEach((checked, index) => {
+          checkboxes[index].checked = checked;
+        });
+      }
+    }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      const syllabusData = [
+        {
+          chapter: "1. Physical World",
+          topics: [
+            "What is physics?",
+            "Scope and excitement of physics",
+            "Nature of physical laws",
+            "Physics, technology and society"
+          ]
+        },
+        {
+          chapter: "2. Units and Measurements",
+          topics: [
+            "The international system of units",
+            "Measurement of length, mass and time",
+            "Accuracy, precision of instruments",
+            "Errors in measurement",
+            "Significant figures",
+            "Dimensions of physical quantities",
+            "Dimensional analysis"
+          ]
+        },
+        {
+          chapter: "3. Motion in a Straight Line",
+          topics: [
+            "Position-time graph",
+            "Speed and velocity",
+            "Acceleration",
+            "Kinematic equations",
+            "Uniform and non-uniform motion",
+            "Relative velocity"
+          ]
+        },
+        {
+          chapter: "4. Motion in a Plane",
+          topics: [
+            "Vectors",
+            "Addition and subtraction of vectors",
+            "Projectile motion",
+            "Uniform circular motion"
+          ]
+        },
+        {
+          chapter: "5. Laws of Motion",
+          topics: [
+            "Newton’s laws of motion",
+            "Inertia",
+            "Conservation of momentum",
+            "Equilibrium of a particle",
+            "Friction",
+            "Circular motion dynamics"
+          ]
+        },
+        {
+          chapter: "6. Work, Energy and Power",
+          topics: [
+            "Work done by constant force",
+            "Kinetic energy and work-energy theorem",
+            "Power",
+            "Potential energy",
+            "Conservation of mechanical energy",
+            "Collisions"
+          ]
+        },
+        {
+          chapter: "7. System of Particles and Rotational Motion",
+          topics: [
+            "Centre of mass",
+            "Motion of centre of mass",
+            "Linear momentum",
+            "Torque",
+            "Angular momentum",
+            "Moment of inertia",
+            "Theorems of moment of inertia"
+          ]
+        },
+        {
+          chapter: "8. Gravitation",
+          topics: [
+            "Universal law of gravitation",
+            "Acceleration due to gravity",
+            "Escape velocity",
+            "Satellites",
+            "Kepler's laws"
+          ]
+        },
+        {
+          chapter: "9. Mechanical Properties of Solids",
+          topics: [
+            "Stress and strain",
+            "Hooke’s law",
+            "Young’s modulus",
+            "Bulk modulus",
+            "Shear modulus"
+          ]
+        },
+        {
+          chapter: "10. Mechanical Properties of Fluids",
+          topics: [
+            "Pressure",
+            "Pascal’s law",
+            "Viscosity",
+            "Surface tension",
+            "Bernoulli's theorem"
+          ]
+        },
+        {
+          chapter: "11. Thermal Properties of Matter",
+          topics: [
+            "Heat and temperature",
+            "Thermal expansion",
+            "Calorimetry",
+            "Change of state",
+            "Specific heat",
+            "Heat transfer methods"
+          ]
+        },
+        {
+          chapter: "12. Thermodynamics",
+          topics: [
+            "Zeroth law",
+            "First law of thermodynamics",
+            "Isothermal and adiabatic processes",
+            "Second law of thermodynamics",
+            "Carnot engine"
+          ]
+        },
+        {
+          chapter: "13. Kinetic Theory",
+          topics: [
+            "Kinetic theory of gases",
+            "Pressure of gas",
+            "Equation of state",
+            "RMS speed, degrees of freedom",
+            "Mean free path"
+          ]
+        },
+        {
+          chapter: "14. Oscillations",
+          topics: [
+            "Periodic motion",
+            "Simple harmonic motion",
+            "Energy in SHM",
+            "Damped and forced oscillations",
+            "Resonance"
+          ]
+        },
+        {
+          chapter: "15. Waves",
+          topics: [
+            "Wave motion",
+            "Transverse and longitudinal waves",
+            "Speed of wave motion",
+            "Sound waves",
+            "Beats",
+            "Doppler effect"
+          ]
+        }
+      ];
+  
+      const syllabusContainer = document.getElementById("syllabus");
+  
+      syllabusData.forEach((chapter, chapterIndex) => {
+        const chapterDiv = document.createElement("div");
+        chapterDiv.className = "chapter";
+  
+        const chapterTitle = document.createElement("h2");
+        chapterTitle.textContent = chapter.chapter;
+        chapterDiv.appendChild(chapterTitle);
+  
+        chapter.topics.forEach((topic, topicIndex) => {
+          totalTopics++;
+          const topicId = `chapter${chapterIndex}-topic${topicIndex}`;
+  
+          const label = document.createElement("label");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.id = topicId;
+  
+          label.htmlFor = topicId;
+          label.appendChild(checkbox);
+          label.append(topic);
+          chapterDiv.appendChild(label);
+        });
+  
+        syllabusContainer.appendChild(chapterDiv);
+      });
+  
+      // Load the saved progress from local storage
+      loadProgress();
+  
+      // Add an event listener to save progress whenever a checkbox is clicked
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", saveProgress);
+      });
+  
+      updateDashboard(); // Initial bar set
+    });
+  </script>
+  
+
+</body>
+</html>

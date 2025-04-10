@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chemistry Class 11 Syllabus</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #1b5e20;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .chapter {
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .chapter-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #1b5e20;
+    }
+
+    .topic {
+      margin: 0.3rem 0;
+    }
+
+    .topic input[type="checkbox"] {
+      margin-right: 0.6rem;
+    }
+
+    .progress-bar-container {
+      background: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 24px;
+      margin: 1rem 0 2rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: #1b5e20;
+      color: white;
+      text-align: center;
+      line-height: 24px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    footer {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1b5e20;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chemistry Class 11 Syllabus Tracker</h1>
+  </header>
+
+  <div class="container">
+    <div class="progress-bar-container">
+      <div id="progress" class="progress-bar">0%</div>
+    </div>
+
+    <div id="syllabus"></div>
+
+    <footer>
+      <a href="index.html">← Back to Home</a>
+    </footer>
+  </div>
+
+  <script>
+    const syllabusData = [
+      {
+        chapter: "1. Some Basic Concepts of Chemistry",
+        topics: [
+          "Importance of Chemistry",
+          "Laws of Chemical Combination",
+          "Dalton’s Atomic Theory",
+          "Mole Concept",
+          "Empirical and Molecular Formula",
+          "Stoichiometry and Limiting Reagent"
+        ]
+      },
+      {
+        chapter: "2. Structure of Atom",
+        topics: [
+          "Discovery of Subatomic Particles",
+          "Atomic Models – Thomson, Rutherford",
+          "Bohr’s Model",
+          "Quantum Mechanical Model",
+          "Orbitals and Quantum Numbers",
+          "Electronic Configuration"
+        ]
+      },
+      {
+        chapter: "3. Classification of Elements and Periodicity",
+        topics: [
+          "Modern Periodic Law and Periodic Table",
+          "Periodic Trends in Properties",
+          "Valency, Ionization Enthalpy",
+          "Electronegativity"
+        ]
+      },
+      {
+        chapter: "4. Chemical Bonding and Molecular Structure",
+        topics: [
+          "Types of Bonds",
+          "Lewis Structure",
+          "VSEPR Theory",
+          "Valence Bond Theory",
+          "Hybridization",
+          "Molecular Orbital Theory"
+        ]
+      },
+      {
+        chapter: "5. States of Matter: Gases and Liquids",
+        topics: [
+          "Gas Laws",
+          "Ideal and Real Gases",
+          "Kinetic Theory of Gases",
+          "Liquefaction of Gases",
+          "Intermolecular Forces in Liquids"
+        ]
+      },
+      {
+        chapter: "6. Thermodynamics",
+        topics: [
+          "System and Surroundings",
+          "First Law of Thermodynamics",
+          "Internal Energy and Enthalpy",
+          "Hess’s Law",
+          "Spontaneity and Gibbs Free Energy"
+        ]
+      },
+      {
+        chapter: "7. Equilibrium",
+        topics: [
+          "Equilibrium in Physical and Chemical Processes",
+          "Law of Chemical Equilibrium",
+          "Le Chatelier’s Principle",
+          "Acids, Bases and Salts",
+          "pH and Buffer Solutions",
+          "Solubility Product"
+        ]
+      },
+      {
+        chapter: "8. Redox Reactions",
+        topics: [
+          "Oxidation and Reduction",
+          "Redox Reactions",
+          "Electron Transfer Reactions",
+          "Balancing Redox Reactions"
+        ]
+      },
+      {
+        chapter: "9. Hydrogen",
+        topics: [
+          "Position in Periodic Table",
+          "Isotopes of Hydrogen",
+          "Hydrides",
+          "Water and Hydrogen Peroxide",
+          "Heavy Water and Uses of Hydrogen"
+        ]
+      },
+      {
+        chapter: "10. The s-Block Element",
+        topics: [
+          "Group 1 and 2 Elements",
+          "Electronic Configuration and Properties",
+          "Anomalous Behaviour of Lithium and Beryllium",
+          "Important Compounds: NaCl, NaOH, CaO, Ca(OH)₂",
+          "Biological Importance"
+        ]
+      },
+      {
+        chapter: "11. Some p-Block Elements",
+        topics: [
+          "Group 13 and 14 Elements",
+          "Boron Family and Carbon Family",
+          "Properties and Trends",
+          "Important Compounds: B₂H₆, AlCl₃, CO, CO₂, SiO₂"
+        ]
+      },
+      {
+        chapter: "12. Organic Chemistry: Basic Principles",
+        topics: [
+          "Tetravalency of Carbon",
+          "Classification and Nomenclature",
+          "Electronic Effects: Inductive, Resonance",
+          "Types of Reagents and Reaction Mechanisms",
+          "Purification and Characterization"
+        ]
+      },
+      {
+        chapter: "13. Hydrocarbons",
+        topics: [
+          "Alkanes: Nomenclature, Preparation and Reactions",
+          "Alkenes: Electrophilic Addition",
+          "Alkynes",
+          "Aromatic Hydrocarbons – Benzene",
+          "Directive Influence and Isomerism"
+        ]
+      },
+      {
+        chapter: "14. Environmental Chemistry",
+        topics: [
+          "Environmental Pollution",
+          "Greenhouse Effect and Acid Rain",
+          "Ozone Layer Depletion",
+          "Water and Soil Pollution",
+          "Green Chemistry"
+        ]
+      }
+    ];
+
+    const syllabusContainer = document.getElementById("syllabus");
+    const progressBar = document.getElementById("progress");
+
+    function renderSyllabus() {
+      syllabusContainer.innerHTML = "";
+      let total = 0, completed = 0;
+
+      syllabusData.forEach((chapter, chapterIndex) => {
+        const chapterDiv = document.createElement("div");
+        chapterDiv.className = "chapter";
+
+        const chapterTitle = document.createElement("div");
+        chapterTitle.className = "chapter-title";
+        chapterTitle.textContent = chapter.chapter;
+
+        chapterDiv.appendChild(chapterTitle);
+
+        chapter.topics.forEach((topic, topicIndex) => {
+          const topicDiv = document.createElement("div");
+          topicDiv.className = "topic";
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+
+          const key = `chem11-${chapterIndex}-${topicIndex}`;
+          checkbox.checked = localStorage.getItem(key) === "true";
+
+          checkbox.addEventListener("change", () => {
+            localStorage.setItem(key, checkbox.checked);
+            updateProgress();
+          });
+
+          if (checkbox.checked) completed++;
+          total++;
+
+          const label = document.createElement("label");
+          label.textContent = topic;
+
+          topicDiv.appendChild(checkbox);
+          topicDiv.appendChild(label);
+          chapterDiv.appendChild(topicDiv);
+        });
+
+        syllabusContainer.appendChild(chapterDiv);
+      });
+
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const total = checkboxes.length;
+      const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
+      const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+      progressBar.style.width = percent + "%";
+      progressBar.textContent = percent + "%";
+    }
+
+    document.addEventListener("DOMContentLoaded", renderSyllabus);
+  </script>
+</body>
+</html>

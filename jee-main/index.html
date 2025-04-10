@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JEE Syllabus Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6fb;
+      margin: 0;
+      padding: 40px 20px;
+      color: #2c3e50;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #666;
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
+
+    .progress-container {
+      max-width: 900px;
+      margin: 0 auto 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-bar {
+      background-color: #dfe6e9;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 22px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      text-align: right;
+      padding-right: 10px;
+      line-height: 22px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 20px;
+    }
+
+    .overall .progress-fill { background: #6c5ce7; }
+    .physics .progress-fill { background: #0984e3; }
+    .chemistry .progress-fill { background: #e17055; }
+    .maths .progress-fill { background: #00b894; }
+
+    .subjects-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .subject-card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 280px;
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .subject-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .subject-title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #34495e;
+    }
+
+    .link {
+      display: block;
+      text-decoration: none;
+      color: #2980b9;
+      margin: 8px 0;
+      font-weight: 500;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .subjects-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📘 JEE Syllabus Tracker</h1>
+  <h2>Track your progress across all subjects</h2>
+
+  <div class="progress-container">
+    <div class="overall">
+      <strong>📈 Overall Progress</strong>
+      <div class="progress-bar">
+        <div id="overall-progress" class="progress-fill" style="width: 0%">0%</div>
+      </div>
+    </div>
+
+    <div class="physics">
+      <strong>🔬 Physics</strong>
+      <div class="progress-bar">
+        <div id="physics-progress" class="progress-fill" style="width: 0%">0%</div>
+      </div>
+    </div>
+
+    <div class="chemistry">
+      <strong>🧪 Chemistry</strong>
+      <div class="progress-bar">
+        <div id="chemistry-progress" class="progress-fill" style="width: 0%">0%</div>
+      </div>
+    </div>
+
+    <div class="maths">
+      <strong>📐 Mathematics</strong>
+      <div class="progress-bar">
+        <div id="maths-progress" class="progress-fill" style="width: 0%">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subjects-container">
+
+    <div class="subject-card">
+      <div class="subject-title">Physics</div>
+      <a class="link" href="physics11.html">📗 Class 11</a>
+      <a class="link" href="physics12.html">📘 Class 12</a>
+    </div>
+
+    <div class="subject-card">
+      <div class="subject-title">Chemistry</div>
+      <a class="link" href="chemistry11.html">📗 Class 11</a>
+      <a class="link" href="chemistry12.html">📘 Class 12</a>
+    </div>
+
+    <div class="subject-card">
+      <div class="subject-title">Mathematics</div>
+      <a class="link" href="maths11.html">📗 Class 11</a>
+      <a class="link" href="maths12.html">📘 Class 12</a>
+    </div>
+
+  </div>
+
+  <script>
+    function getProgress(subject) {
+      const total = parseInt(localStorage.getItem(`${subject}-total`) || "0");
+      const done = parseInt(localStorage.getItem(`${subject}-done`) || "0");
+      return total > 0 ? Math.floor((done / total) * 100) : 0;
+    }
+
+    function updateProgressBars() {
+      const physics = getProgress("physics");
+      const chemistry = getProgress("chemistry");
+      const maths = getProgress("maths");
+
+      const overall = Math.floor((physics + chemistry + maths) / 3);
+
+      document.getElementById("physics-progress").style.width = physics + "%";
+      document.getElementById("physics-progress").textContent = physics + "%";
+
+      document.getElementById("chemistry-progress").style.width = chemistry + "%";
+      document.getElementById("chemistry-progress").textContent = chemistry + "%";
+
+      document.getElementById("maths-progress").style.width = maths + "%";
+      document.getElementById("maths-progress").textContent = maths + "%";
+
+      document.getElementById("overall-progress").style.width = overall + "%";
+      document.getElementById("overall-progress").textContent = overall + "%";
+    }
+
+    document.addEventListener("DOMContentLoaded", updateProgressBars);
+  </script>
+</body>
+
+<footer style="background-color: #f1f1f1; padding: 30px 20px; text-align: center; font-size: 0.95rem; color: #555; border-top: 1px solid #ddd; margin-top: 60px;">
+  <p>© 2025 <strong>Soaham Chakraborty</strong> • Built with ❤️ as a part of <strong>Array</strong>, a project under <strong>MotionLabs</strong>.</p>
+  <p>
+    <a href="contact.html" style="color: #2980b9; text-decoration: none; margin: 0 10px;">Contact Us</a> |
+    <a href="terms.html" style="color: #2980b9; text-decoration: none; margin: 0 10px;">Terms & Conditions</a>
+  </p>
+</footer>
+
+</html>

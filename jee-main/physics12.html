@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Physics Class 12 Syllabus Tracker</title>
+  <style>
+    /* Keep your styles untouched */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9ff;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .chapter {
+      background-color: #fff;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 800px;
+    }
+    .chapter h2 {
+      margin-bottom: 10px;
+      color: #34495e;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+    #progressContainer {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #e0e0e0;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 25px;
+    }
+    #progressBar {
+      height: 100%;
+      background-color: #4CAF50;
+      width: 0%;
+      transition: width 0.4s ease;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+    }
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      text-decoration: none;
+      color: #2980b9;
+      font-weight: bold;
+    }
+    .back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Physics Class 12 Syllabus</h1>
+
+  <div id="progressContainer">
+    <div id="progressBar">0%</div>
+  </div>
+
+  <div id="syllabus"></div>
+
+  <a href="index.html" class="back">← Back to Home</a>
+
+  <script>
+    const syllabusData = [
+      {
+        chapter: "1. Electric Charges and Fields",
+        topics: [
+          "Electric charges",
+          "Coulomb’s law",
+          "Electric field",
+          "Electric field lines",
+          "Electric flux",
+          "Gauss’s law and its applications"
+        ]
+      },
+      {
+        chapter: "2. Electrostatic Potential and Capacitance",
+        topics: [
+          "Electric potential",
+          "Potential difference",
+          "Equipotential surfaces",
+          "Potential energy",
+          "Capacitors and capacitance",
+          "Combination of capacitors",
+          "Energy stored in a capacitor"
+        ]
+      },
+      {
+        chapter: "3. Current Electricity",
+        topics: [
+          "Electric current",
+          "Ohm’s law",
+          "Drift of electrons",
+          "Resistance and resistivity",
+          "Temperature dependence of resistance",
+          "Combination of resistors",
+          "Kirchhoff’s laws",
+          "Wheatstone bridge",
+          "Meter bridge",
+          "Potentiometer"
+        ]
+      },
+      {
+        chapter: "4. Moving Charges and Magnetism",
+        topics: [
+          "Magnetic force",
+          "Motion in a magnetic field",
+          "Biot-Savart law",
+          "Ampere’s Circuital law",
+          "Solenoid and toroid",
+          "Force between two current-carrying wires",
+          "Current loop as magnetic dipole"
+        ]
+      },
+      {
+        chapter: "5. Magnetism and Matter",
+        topics: [
+          "Bar magnet",
+          "Earth’s magnetism",
+          "Magnetization and magnetic intensity",
+          "Magnetic properties of materials",
+          "Hysteresis"
+        ]
+      },
+      {
+        chapter: "6. Electromagnetic Induction",
+        topics: [
+          "Faraday’s laws",
+          "Lenz’s law",
+          "Eddy currents",
+          "Self and mutual induction",
+          "AC generator"
+        ]
+      },
+      {
+        chapter: "7. Alternating Current",
+        topics: [
+          "AC voltage applied to resistor, inductor, and capacitor",
+          "Series LCR circuit",
+          "Resonance",
+          "Power in AC circuits",
+          "Power factor",
+          "Transformers"
+        ]
+      },
+      {
+        chapter: "8. Electromagnetic Waves",
+        topics: [
+          "Need for displacement current",
+          "Electromagnetic spectrum",
+          "Properties and uses of EM waves"
+        ]
+      },
+      {
+        chapter: "9. Ray Optics and Optical Instruments",
+        topics: [
+          "Reflection of light",
+          "Refraction and total internal reflection",
+          "Spherical mirrors and lenses",
+          "Lens maker’s formula",
+          "Magnification",
+          "Optical instruments (microscope, telescope)"
+        ]
+      },
+      {
+        chapter: "10. Wave Optics",
+        topics: [
+          "Huygens principle",
+          "Interference",
+          "Young’s double slit experiment",
+          "Diffraction",
+          "Polarization"
+        ]
+      },
+      {
+        chapter: "11. Dual Nature of Radiation and Matter",
+        topics: [
+          "Photoelectric effect",
+          "Einstein’s equation",
+          "Particle nature of light",
+          "de Broglie relation"
+        ]
+      },
+      {
+        chapter: "12. Atoms",
+        topics: [
+          "Alpha-particle scattering",
+          "Rutherford model",
+          "Bohr model",
+          "Energy levels",
+          "Spectral lines of hydrogen"
+        ]
+      },
+      {
+        chapter: "13. Nuclei",
+        topics: [
+          "Nuclear structure",
+          "Mass-energy relation",
+          "Nuclear binding energy",
+          "Radioactivity",
+          "Nuclear fission and fusion"
+        ]
+      },
+      {
+        chapter: "14. Semiconductor Electronics",
+        topics: [
+          "Semiconductors",
+          "Diodes and their applications",
+          "Transistors",
+          "Logic gates (AND, OR, NOT, NAND, NOR)"
+        ]
+      },
+      {
+        chapter: "15. Communication Systems",
+        topics: [
+          "Elements of communication system",
+          "Bandwidth of signals",
+          "Modulation",
+          "Propagation of electromagnetic waves"
+        ]
+      }
+    ];
+
+    let totalTopics = 0;
+
+    function renderSyllabus(subject, syllabusData) {
+      const syllabusContainer = document.getElementById("syllabus");
+      syllabusContainer.innerHTML = ''; // Clear the container before rendering
+      syllabusData.forEach((chapter, chapterIndex) => {
+        const chapterDiv = document.createElement("div");
+        chapterDiv.className = "chapter";
+
+        const chapterTitle = document.createElement("h2");
+        chapterTitle.textContent = chapter.chapter;
+        chapterDiv.appendChild(chapterTitle);
+
+        chapter.topics.forEach((topic, topicIndex) => {
+          totalTopics++;
+          const topicId = `chapter${chapterIndex}-topic${topicIndex}`;
+          
+          const label = document.createElement("label");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.id = topicId;
+
+          label.htmlFor = topicId;
+          label.appendChild(checkbox);
+          label.append(topic);
+          chapterDiv.appendChild(label);
+        });
+
+        syllabusContainer.appendChild(chapterDiv);
+      });
+
+      // Load saved progress
+      loadProgress();
+
+      // Event listener to save progress on checkbox change
+      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener("change", saveProgress);
+      });
+
+      updateProgressBar();
+    }
+
+    function saveProgress() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const progress = [...checkboxes].map(cb => cb.checked);
+      localStorage.setItem("progress", JSON.stringify(progress));
+      updateProgressBar();
+    }
+
+    function loadProgress() {
+      const savedProgress = JSON.parse(localStorage.getItem("progress"));
+      if (savedProgress) {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        savedProgress.forEach((checked, index) => {
+          checkboxes[index].checked = checked;
+        });
+      }
+    }
+
+    function updateProgressBar() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const checked = [...checkboxes].filter(cb => cb.checked).length;
+      const percent = Math.round((checked / totalTopics) * 100);
+      const progressBar = document.getElementById("progressBar");
+      progressBar.style.width = `${percent}%`;
+      progressBar.textContent = `${percent}%`;
+    }
+
+    // Call the function to render the syllabus
+    renderSyllabus("Physics", syllabusData);
+  </script>
+</body>
+</html>

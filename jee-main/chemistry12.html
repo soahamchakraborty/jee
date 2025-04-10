@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chemistry Class 12 Syllabus</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #880e4f;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .chapter {
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .chapter-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #880e4f;
+    }
+
+    .topic {
+      margin: 0.3rem 0;
+    }
+
+    .topic input[type="checkbox"] {
+      margin-right: 0.6rem;
+    }
+
+    .progress-bar-container {
+      background: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 24px;
+      margin: 1rem 0 2rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: #880e4f;
+      color: white;
+      text-align: center;
+      line-height: 24px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    footer {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #880e4f;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Chemistry Class 12 Syllabus Tracker</h1>
+  </header>
+
+  <div class="container">
+    <div class="progress-bar-container">
+      <div id="progress" class="progress-bar">0%</div>
+    </div>
+
+    <div id="syllabus"></div>
+
+    <footer>
+      <a href="index.html">← Back to Home</a>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const syllabusData = [
+        {
+          chapter: "1. The Solid State",
+          topics: [
+            "Classification of Solids",
+            "Unit Cell in 2D and 3D",
+            "Packing Efficiency",
+            "Calculation of Density",
+            "Imperfections in Solids",
+            "Electrical and Magnetic Properties"
+          ]
+        },
+        {
+          chapter: "2. Solutions",
+          topics: [
+            "Types of Solutions",
+            "Concentration Terms",
+            "Vapour Pressure",
+            "Raoult’s Law",
+            "Colligative Properties",
+            "Abnormal Molar Mass"
+          ]
+        },
+        {
+          chapter: "3. Electrochemistry",
+          topics: [
+            "Redox Reactions and Conductance",
+            "Electrolytic and Galvanic Cells",
+            "Nernst Equation",
+            "Electrochemical Series",
+            "Batteries and Fuel Cells",
+            "Corrosion"
+          ]
+        },
+        {
+          chapter: "4. Chemical Kinetics",
+          topics: [
+            "Rate of Reaction",
+            "Order and Molecularity",
+            "Integrated Rate Equations",
+            "Arrhenius Equation",
+            "Collision Theory"
+          ]
+        },
+        {
+          chapter: "5. Surface Chemistry",
+          topics: [
+            "Adsorption – Types and Isotherms",
+            "Catalysis",
+            "Colloids and Emulsions",
+            "Preparation and Properties of Colloids"
+          ]
+        },
+        {
+          chapter: "6. The p-Block Element",
+          topics: [
+            "Group 15 Elements",
+            "Group 16 Elements",
+            "Group 17 Elements",
+            "Group 18 Elements",
+            "Properties and Anomalies",
+            "Important Compounds"
+          ]
+        },
+        {
+          chapter: "7. The d- & f-Block Elements",
+          topics: [
+            "Electronic Configuration",
+            "General Properties of Transition Metals",
+            "Lanthanoids and Actinoids",
+            "Colour, Catalytic Properties",
+            "Complex Formation"
+          ]
+        },
+        {
+          chapter: "8. The Coordination Compounds",
+          topics: [
+            "Coordination Number and Ligands",
+            "Nomenclature and Bonding",
+            "Crystal Field Theory",
+            "Magnetic Properties",
+            "Isomerism",
+            "Stability of Complexes"
+          ]
+        },
+        {
+          chapter: "9. Haloalkanes and Haloarenes",
+          topics: [
+            "Nomenclature and Classification",
+            "Nature of C–X Bond",
+            "Substitution Reactions",
+            "Stereochemistry",
+            "Uses and Environmental Effects"
+          ]
+        },
+        {
+          chapter: "10. Alcohols, Phenols and Ethers",
+          topics: [
+            "Structures and Classification",
+            "Preparation and Reactions of Alcohols",
+            "Acidity of Phenols",
+            "Ether Preparation and Reactions"
+          ]
+        },
+        {
+          chapter: "11. Aldehydes, Ketones and Carboxylic Acids",
+          topics: [
+            "Nomenclature and Preparation",
+            "Chemical Properties",
+            "Mechanism of Nucleophilic Addition",
+            "Carboxylic Acids – Acidity and Reactions"
+          ]
+        },
+        {
+          chapter: "12. Organic Compounds Containing Nitrogen",
+          topics: [
+            "Amines – Structure, Classification",
+            "Preparation and Reactions",
+            "Diazonium Salts and Their Importance"
+          ]
+        },
+        {
+          chapter: "13. Biomolecules",
+          topics: [
+            "Carbohydrates – Monosaccharides and Polysaccharides",
+            "Proteins – Structure and Function",
+            "Vitamins and Enzymes",
+            "Nucleic Acids – DNA/RNA"
+          ]
+        },
+        {
+          chapter: "14. Polymers",
+          topics: [
+            "Classification and Types",
+            "Addition and Condensation Polymers",
+            "Natural and Synthetic Polymers",
+            "Biodegradable Polymers"
+          ]
+        },
+        {
+          chapter: "15. Chemistry in Everyday Life",
+          topics: [
+            "Drugs and Their Classification",
+            "Chemicals in Food",
+            "Cleansing Agents"
+          ]
+        }
+      ];
+
+      const syllabusContainer = document.getElementById("syllabus");
+      const progressBar = document.getElementById("progress");
+
+      function renderSyllabus() {
+        syllabusContainer.innerHTML = "";
+        let total = 0, completed = 0;
+
+        syllabusData.forEach((chapter, chapterIndex) => {
+          const chapterDiv = document.createElement("div");
+          chapterDiv.className = "chapter";
+
+          const chapterTitle = document.createElement("div");
+          chapterTitle.className = "chapter-title";
+          chapterTitle.textContent = chapter.chapter;
+
+          chapterDiv.appendChild(chapterTitle);
+
+          chapter.topics.forEach((topic, topicIndex) => {
+            const topicDiv = document.createElement("div");
+            topicDiv.className = "topic";
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+
+            const key = `chem12-${chapterIndex}-${topicIndex}`;
+            checkbox.checked = localStorage.getItem(key) === "true";
+
+            checkbox.addEventListener("change", () => {
+              localStorage.setItem(key, checkbox.checked);
+              updateProgress();
+            });
+
+            if (checkbox.checked) completed++;
+            total++;
+
+            const label = document.createElement("label");
+            label.textContent = topic;
+
+            topicDiv.appendChild(checkbox);
+            topicDiv.appendChild(label);
+            chapterDiv.appendChild(topicDiv);
+          });
+
+          syllabusContainer.appendChild(chapterDiv);
+        });
+
+        updateProgress();
+      }
+
+      function updateProgress() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const total = checkboxes.length;
+        const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
+        const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+        progressBar.style.width = percent + "%";
+        progressBar.textContent = percent + "%";
+      }
+
+      renderSyllabus();
+    });
+  </script>
+</body>
+</html>

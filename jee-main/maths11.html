@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maths Class 11 Syllabus</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #0d47a1;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .chapter {
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .chapter-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #0d47a1;
+    }
+
+    .topic {
+      margin: 0.3rem 0;
+    }
+
+    .topic input[type="checkbox"] {
+      margin-right: 0.6rem;
+    }
+
+    .progress-bar-container {
+      background: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 24px;
+      margin: 1rem 0 2rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: #0d47a1;
+      color: white;
+      text-align: center;
+      line-height: 24px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    footer {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #0d47a1;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Maths Class 11 Syllabus Tracker</h1>
+  </header>
+
+  <div class="container">
+    <div class="progress-bar-container">
+      <div id="progress" class="progress-bar">0%</div>
+    </div>
+
+    <div id="syllabus"></div>
+
+    <footer>
+      <a href="index.html">← Back to Home</a>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const syllabusData = [
+        { chapter: "1. Sets", topics: ["Introduction to Sets", "Types of Sets", "Venn Diagrams", "Operations on Sets", "Complement of a Set", "Applications"] },
+        { chapter: "2. Relations & Functions", topics: ["Ordered Pairs", "Cartesian Product of Sets", "Relations", "Functions and their Types"] },
+        { chapter: "3. Trigonometric Functions", topics: ["Angles and their Measure", "Trigonometric Functions", "Graphs of Trigonometric Functions", "Trigonometric Identities"] },
+        { chapter: "4. Principle of Mathematical Induction", topics: ["Introduction", "Steps of Mathematical Induction", "Examples & Applications"] },
+        { chapter: "5. Complex Numbers and Quadratic Equations", topics: ["Need for Complex Numbers", "Algebra of Complex Numbers", "Polar Representation", "Quadratic Equations: Nature of Roots"] },
+        { chapter: "6. Linear Inequalities", topics: ["Linear Inequalities in One and Two Variables", "Graphical Solution", "Solution of System of Linear Inequalities"] },
+        { chapter: "7. Permutations and Combinations", topics: ["Fundamental Principle of Counting", "Permutation", "Combination", "Applications"] },
+        { chapter: "8. Binomial Theorem", topics: ["Binomial Theorem for Positive Integral Index", "General and Middle Terms", "Simple Applications"] },
+        { chapter: "9. Sequences and Series", topics: ["Arithmetic Progression", "Geometric Progression", "General Term of a Series", "Sum to n Terms", "Special Series"] },
+        { chapter: "10. Straight Lines", topics: ["Slope of a Line", "Various Forms of Line", "Angle Between Two Lines", "Distance from a Point to a Line"] },
+        { chapter: "11. Conic Sections", topics: ["Circle", "Parabola", "Ellipse", "Hyperbola", "Standard Equations"] },
+        { chapter: "12. Introduction to Three-Dimensional Geometry", topics: ["Coordinate System in 3D", "Distance Between Two Points", "Section Formula"] },
+        { chapter: "13. Limits and Derivatives", topics: ["Introduction", "Limits", "Derivatives (First Principle)", "Basic Rules of Differentiation"] },
+        { chapter: "14. Mathematical Reasoning", topics: ["Statements", "Logical Connectives", "Quantifiers", "Implications", "Validating Statements"] },
+        { chapter: "15. Statistics", topics: ["Measures of Dispersion", "Mean, Variance and Standard Deviation", "Analysis of Frequency Distributions"] },
+        { chapter: "16. Probability", topics: ["Random Experiments", "Sample Space", "Events and Probability", "Addition and Multiplication Theorems"] }
+      ];
+
+      const syllabusContainer = document.getElementById("syllabus");
+      const progressBar = document.getElementById("progress");
+
+      function renderSyllabus() {
+        syllabusContainer.innerHTML = "";
+        syllabusData.forEach((chapter, chapterIndex) => {
+          const chapterDiv = document.createElement("div");
+          chapterDiv.className = "chapter";
+
+          const chapterTitle = document.createElement("div");
+          chapterTitle.className = "chapter-title";
+          chapterTitle.textContent = chapter.chapter;
+
+          chapterDiv.appendChild(chapterTitle);
+
+          chapter.topics.forEach((topic, topicIndex) => {
+            const topicDiv = document.createElement("div");
+            topicDiv.className = "topic";
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+
+            const key = `maths11-${chapterIndex}-${topicIndex}`;
+            checkbox.checked = localStorage.getItem(key) === "true";
+
+            checkbox.addEventListener("change", () => {
+              localStorage.setItem(key, checkbox.checked);
+              updateProgress();
+            });
+
+            const label = document.createElement("label");
+            label.textContent = topic;
+
+            topicDiv.appendChild(checkbox);
+            topicDiv.appendChild(label);
+            chapterDiv.appendChild(topicDiv);
+          });
+
+          syllabusContainer.appendChild(chapterDiv);
+        });
+
+        updateProgress();
+      }
+
+      function updateProgress() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const total = checkboxes.length;
+        const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
+        const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+        progressBar.style.width = percent + "%";
+        progressBar.textContent = percent + "%";
+      }
+
+      renderSyllabus();
+    });
+  </script>
+</body>
+</html>
