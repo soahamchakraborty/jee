@@ -35,12 +35,18 @@
       box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
     }
 
+    .progress-title {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
     .progress-bar {
       background-color: #dfe6e9;
       border-radius: 20px;
       overflow: hidden;
       height: 22px;
-      margin-top: 10px;
+      margin-top: 8px;
       margin-bottom: 20px;
     }
 
@@ -53,6 +59,7 @@
       font-size: 14px;
       font-weight: 600;
       border-radius: 20px;
+      transition: width 0.5s ease;
     }
 
     .overall .progress-fill { background: #6c5ce7; }
@@ -114,10 +121,8 @@
   <h1>📘 JEE Syllabus Tracker - TickVault</h1>
   <h2>Track your progress across all subjects</h2>
 
-
-
+  <!-- Subject Cards -->
   <div class="subjects-container">
-
     <div class="subject-card">
       <div class="subject-title">Physics</div>
       <a class="link" href="physics11.html">📗 Class 11</a>
@@ -135,38 +140,9 @@
       <a class="link" href="maths11.html">📗 Class 11</a>
       <a class="link" href="maths12.html">📘 Class 12</a>
     </div>
-
   </div>
 
-  <script>
-    function getProgress(subject) {
-      const total = parseInt(localStorage.getItem(`${subject}-total`) || "0");
-      const done = parseInt(localStorage.getItem(`${subject}-done`) || "0");
-      return total > 0 ? Math.floor((done / total) * 100) : 0;
-    }
-
-    function updateProgressBars() {
-      const physics = getProgress("physics");
-      const chemistry = getProgress("chemistry");
-      const maths = getProgress("maths");
-
-      const overall = Math.floor((physics + chemistry + maths) / 3);
-
-      document.getElementById("physics-progress").style.width = physics + "%";
-      document.getElementById("physics-progress").textContent = physics + "%";
-
-      document.getElementById("chemistry-progress").style.width = chemistry + "%";
-      document.getElementById("chemistry-progress").textContent = chemistry + "%";
-
-      document.getElementById("maths-progress").style.width = maths + "%";
-      document.getElementById("maths-progress").textContent = maths + "%";
-
-      document.getElementById("overall-progress").style.width = overall + "%";
-      document.getElementById("overall-progress").textContent = overall + "%";
-    }
-
-    document.addEventListener("DOMContentLoaded", updateProgressBars);
-  </script>
+  
 </body>
 
 <footer style="background-color: #f1f1f1; padding: 30px 20px; text-align: center; font-size: 0.95rem; color: #555; border-top: 1px solid #ddd; margin-top: 60px;">
