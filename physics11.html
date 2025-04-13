@@ -313,10 +313,12 @@
       // Add an event listener to save progress whenever a checkbox is clicked
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       checkboxes.forEach(checkbox => {
-        checkbox.addEventListener("change", saveProgress);
+        checkbox.addEventListener("change", () => {
+          saveProgress();
+          updateDashboard();
+        });
       });
-  
-      updateDashboard(); // Initial bar set
+      
     });
   </script>
   

@@ -239,77 +239,82 @@
         ]
       }
     ];
-
-    let totalTopics = 0;
-
-    function renderSyllabus(subject, syllabusData) {
-      const syllabusContainer = document.getElementById("syllabus");
-      syllabusContainer.innerHTML = ''; // Clear the container before rendering
-      syllabusData.forEach((chapter, chapterIndex) => {
-        const chapterDiv = document.createElement("div");
-        chapterDiv.className = "chapter";
-
-        const chapterTitle = document.createElement("h2");
-        chapterTitle.textContent = chapter.chapter;
-        chapterDiv.appendChild(chapterTitle);
-
-        chapter.topics.forEach((topic, topicIndex) => {
-          totalTopics++;
-          const topicId = `phy12 -${chapterIndex}-topic${topicIndex}`;
-          
-          const label = document.createElement("label");
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.id = topicId;
-
-          label.htmlFor = topicId;
-          label.appendChild(checkbox);
-          label.append(topic);
-          chapterDiv.appendChild(label);
+    
+      function renderSyllabus(subjectKey, syllabusData) {
+        const syllabusContainer = document.getElementById("syllabus");
+        syllabusContainer.innerHTML = '';
+        let topicCount = 0;
+    
+        syllabusData.forEach((chapter, chapterIndex) => {
+          const chapterDiv = document.createElement("div");
+          chapterDiv.className = "chapter";
+    
+          const chapterTitle = document.createElement("h2");
+          chapterTitle.textContent = chapter.chapter;
+          chapterDiv.appendChild(chapterTitle);
+    
+          chapter.topics.forEach((topic, topicIndex) => {
+            topicCount++;
+            const topicId = `${subjectKey}-${chapterIndex}-topic${topicIndex}`;
+    
+            const label = document.createElement("label");
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.id = topicId;
+    
+            label.htmlFor = topicId;
+            label.appendChild(checkbox);
+            label.append(topic);
+            chapterDiv.appendChild(label);
+          });
+    
+          syllabusContainer.appendChild(chapterDiv);
         });
-
-        syllabusContainer.appendChild(chapterDiv);
-      });
-
-      // Load saved progress
-      loadProgress();
-
-      // Event listener to save progress on checkbox change
-      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener("change", saveProgress);
-      });
-
-      updateProgressBar();
-    }
-
-    function saveProgress() {
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      const progress = [...checkboxes].map(cb => cb.checked);
-      localStorage.setItem("progress", JSON.stringify(progress));
-      updateProgressBar();
-    }
-
-    function loadProgress() {
-      const savedProgress = JSON.parse(localStorage.getItem("progress"));
-      if (savedProgress) {
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        savedProgress.forEach((checked, index) => {
-          checkboxes[index].checked = checked;
+    
+        // Load saved progress
+        loadProgress(subjectKey);
+    
+        // Event listener to save progress on checkbox change
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+          checkbox.addEventListener("change", () => {
+            saveProgress(subjectKey);
+          });
         });
+    
+        // Store total count for progress bar
+        window.totalTopics = topicCount;
+    
+        updateProgressBar();
       }
-    }
-
-    function updateProgressBar() {
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      const checked = [...checkboxes].filter(cb => cb.checked).length;
-      const percent = Math.round((checked / totalTopics) * 100);
-      const progressBar = document.getElementById("progressBar");
-      progressBar.style.width = `${percent}%`;
-      progressBar.textContent = `${percent}%`;
-    }
-
-    // Call the function to render the syllabus
-    renderSyllabus("Physics", syllabusData);
-  </script>
+    
+      function saveProgress(subjectKey) {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const progress = [...checkboxes].map(cb => cb.checked);
+        localStorage.setItem(`progress-${subjectKey}`, JSON.stringify(progress));
+        updateProgressBar();
+      }
+    
+      function loadProgress(subjectKey) {
+        const savedProgress = JSON.parse(localStorage.getItem(`progress-${subjectKey}`));
+        if (savedProgress) {
+          const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+          savedProgress.forEach((checked, index) => {
+            checkboxes[index].checked = checked;
+          });
+        }
+      }
+    
+      function updateProgressBar() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const checked = [...checkboxes].filter(cb => cb.checked).length;
+        const percent = Math.round((checked / totalTopics) * 100);
+        const progressBar = document.getElementById("progressBar");
+        progressBar.style.width = `${percent}%`;
+        progressBar.textContent = `${percent}%`;
+      }
+    
+      // Pass a unique key like "phy12" for Class 12 Physics
+      renderSyllabus("phy12", syllabusData);
+    </script>
 </body>
 </html>
