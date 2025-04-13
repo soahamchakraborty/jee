@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Physics Class 11 Syllabus Tracker</title>
   <link rel="manifest" href="/manifest.json">
-
+  <link rel="icon" type="image/png" href="icons/image.png">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -324,6 +324,19 @@
     });
   </script>
   
-
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(function(registration) {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(function(error) {
+            console.log('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
+  
 </body>
 </html>
