@@ -91,11 +91,12 @@
   <a href="index.html" class="back">← Back to Home</a>
 
   <script>
+    let totalTopics = 0;
+
     function updateDashboard() {
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       const checked = [...checkboxes].filter(cb => cb.checked).length;
-      const total = checkboxes.length;
-      const percent = total === 0 ? 0 : Math.round((checked / total) * 100);
+      const percent = Math.round((checked / totalTopics) * 100);
       const progressBar = document.getElementById("progressBar");
       progressBar.style.width = `${percent}%`;
       progressBar.textContent = `${percent}%`;
@@ -147,6 +148,7 @@
         chapterDiv.appendChild(chapterTitle);
 
         chapter.topics.forEach((topic, topicIndex) => {
+          totalTopics++;
           const topicId = `phy11-${chapterIndex}-topic${topicIndex}`;
 
           const label = document.createElement("label");
@@ -163,7 +165,7 @@
         syllabusContainer.appendChild(chapterDiv);
       });
 
-      loadProgress();
+      loadProgress(); // Load progress after syllabus is populated
 
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       checkboxes.forEach(checkbox => {
@@ -173,6 +175,7 @@
         });
       });
 
+      // ✅ Update the progress bar after everything is loaded
       updateDashboard();
     });
   </script>
