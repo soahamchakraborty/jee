@@ -56,56 +56,10 @@
       text-decoration: none;
       font-weight: 600;
       transition: background 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+      margin-top: 1rem;
     }
 
     .cta-button:hover {
       background-color: #34495e;
-      transform: scale(1.05);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>📘 TickVault </h1>
-    <p>Track your JEE syllabus and revision in one clean dashboard.</p>
-  </header>
-
-  <section class="hero">
-    <img src="icons/image.png" alt="App Logo" />
-    <a class="cta-button" href="home.html">Open Dashboard</a>
-  </section>
-
-  <footer>
-    &copy; 2025 Soaham Chakraborty. Built with ❤️ for self-study warriors.
-  </footer>
-
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js").then(() => {
-        console.log("Service Worker Registered");
-      });
-    }
-  </script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(function(registration) {
-            console.log('Service Worker registered with scope:', registration.scope);
-          })
-          .catch(function(error) {
-            console.log('Service Worker registration failed:', error);
-          });
-      });
-    }
-  </script>
-  
-</body>
-</html>
+      transform:
