@@ -91,23 +91,22 @@
   <a href="index.html" class="back">← Back to Home</a>
 
   <script>
-    let totalTopics = 0;
-  
     function updateDashboard() {
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       const checked = [...checkboxes].filter(cb => cb.checked).length;
-      const percent = Math.round((checked / totalTopics) * 100);
+      const total = checkboxes.length;
+      const percent = total === 0 ? 0 : Math.round((checked / total) * 100);
       const progressBar = document.getElementById("progressBar");
       progressBar.style.width = `${percent}%`;
       progressBar.textContent = `${percent}%`;
     }
-  
+
     function saveProgress() {
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       const progress = [...checkboxes].map(cb => cb.checked);
       localStorage.setItem("progress", JSON.stringify(progress));
     }
-  
+
     function loadProgress() {
       const savedProgress = JSON.parse(localStorage.getItem("progress"));
       if (savedProgress) {
@@ -117,7 +116,7 @@
         });
       }
     }
-  
+
     document.addEventListener("DOMContentLoaded", () => {
       const syllabusData = [
         { chapter: "1. Physical World", topics: ["What is physics?", "Scope and excitement of physics", "Nature of physical laws", "Physics, technology and society"] },
@@ -136,37 +135,36 @@
         { chapter: "14. Oscillations", topics: ["Periodic motion", "Simple harmonic motion", "Energy in SHM", "Damped and forced oscillations", "Resonance"] },
         { chapter: "15. Waves", topics: ["Wave motion", "Transverse and longitudinal waves", "Speed of wave motion", "Sound waves", "Beats", "Doppler effect"] }
       ];
-  
+
       const syllabusContainer = document.getElementById("syllabus");
-  
+
       syllabusData.forEach((chapter, chapterIndex) => {
         const chapterDiv = document.createElement("div");
         chapterDiv.className = "chapter";
-  
+
         const chapterTitle = document.createElement("h2");
         chapterTitle.textContent = chapter.chapter;
         chapterDiv.appendChild(chapterTitle);
-  
+
         chapter.topics.forEach((topic, topicIndex) => {
-          totalTopics++;
           const topicId = `phy11-${chapterIndex}-topic${topicIndex}`;
-  
+
           const label = document.createElement("label");
           const checkbox = document.createElement("input");
           checkbox.type = "checkbox";
           checkbox.id = topicId;
-  
+
           label.htmlFor = topicId;
           label.appendChild(checkbox);
           label.append(topic);
           chapterDiv.appendChild(label);
         });
-  
+
         syllabusContainer.appendChild(chapterDiv);
       });
-  
+
       loadProgress();
-  
+
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       checkboxes.forEach(checkbox => {
         checkbox.addEventListener("change", () => {
@@ -174,13 +172,11 @@
           updateDashboard();
         });
       });
-  
-      // ✅ Update the progress bar after everything is loaded
+
       updateDashboard();
     });
   </script>
-  
-  
+
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
@@ -194,6 +190,6 @@
       });
     }
   </script>
-  
+
 </body>
 </html>
