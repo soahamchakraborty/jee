@@ -62,4 +62,47 @@
 
     .cta-button:hover {
       background-color: #34495e;
-      transform:
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero img {
+        width: 180px;
+      }
+
+      .cta-button {
+        padding: 14px 24px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TickVault</h1>
+    <p>Your Personal Learning Tracker</p>
+  </header>
+
+  <section class="hero">
+    <img src="icons/image.png" alt="TickVault Logo">
+    <a class="cta-button" href="test.html">Start Tracking Test Scores</a>
+    <p>Track your syllabus. Crush your goals. Stay consistent with TickVault – your academic progress vault.</p>
+    <a class="cta-button" href="home.html">Start Tracking Syllabus</a>
+  </section>
+
+  <footer>
+    &copy; 2025 TickVault. Built with 💡 for students, by students.
+  </footer>
+</body>
+</html>
