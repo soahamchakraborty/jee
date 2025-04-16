@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" href="icons/image.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JEE Syllabus Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6fb;
+      margin: 0;
+      padding: 40px 20px;
+      color: #2c3e50;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #666;
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
+
+    .progress-container {
+      max-width: 900px;
+      margin: 0 auto 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-title {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      background-color: #dfe6e9;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 22px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      text-align: right;
+      padding-right: 10px;
+      line-height: 22px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 20px;
+      transition: width 0.5s ease;
+    }
+
+    .overall .progress-fill { background: #6c5ce7; }
+    .physics .progress-fill { background: #0984e3; }
+    .chemistry .progress-fill { background: #e17055; }
+    .maths .progress-fill { background: #00b894; }
+
+    .subjects-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .subject-card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 280px;
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .subject-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .subject-title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #34495e;
+    }
+
+    .link {
+      display: block;
+      text-decoration: none;
+      color: #2980b9;
+      margin: 8px 0;
+      font-weight: 500;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .subjects-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📘 JEE Syllabus Tracker - TickVault</h1>
+  <h2>Track your progress across all subjects</h2>
+
+  <!-- Subject Cards -->
+  <div class="subjects-container">
+    <div class="subject-card">
+      <div class="subject-title">Physics</div>
+      <a class="link" href="physics11.html">📗 Class 11</a>
+      <a class="link" href="physics12.html">📘 Class 12</a>
+    </div>
+
+    <div class="subject-card">
+      <div class="subject-title">Chemistry</div>
+      <a class="link" href="chemistry11.html">📗 Class 11</a>
+      <a class="link" href="chemistry12.html">📘 Class 12</a>
+    </div>
+
+    <div class="subject-card">
+      <div class="subject-title">Mathematics</div>
+      <a class="link" href="maths11.html">📗 Class 11</a>
+      <a class="link" href="maths12.html">📘 Class 12</a>
+    </div>
+  </div>
+
+  
+</body>
+
+<footer style="background-color: #f1f1f1; padding: 30px 20px; text-align: center; font-size: 0.95rem; color: #555; border-top: 1px solid #ddd; margin-top: 60px;">
+  <p>© 2025 <strong>Soaham Chakraborty</strong> • Built with ❤️ as a part of <strong>Array</strong>, a project under <strong>MotionLabs</strong>.</p>
+  <p>
+    <a href="contact.html" style="color: #2980b9; text-decoration: none; margin: 0 10px;">Contact Us</a> |
+    <a href="terms.html" style="color: #2980b9; text-decoration: none; margin: 0 10px;">Terms & Conditions</a>
+  </p>
+</footer>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(function(registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(function(error) {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
+
+</html>

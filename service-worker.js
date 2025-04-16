@@ -3,7 +3,7 @@ self.addEventListener('install', (event) => {
       caches.open('my-cache').then((cache) => {
         return cache.addAll([
           '/home.html',
-          '/index.html',
+          '/dash.html',
           '/chemistry11.html',   // List all your HTML pages here
           '/chemistry12.html',
           '/contact.html',
