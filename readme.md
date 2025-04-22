@@ -2,7 +2,6 @@
 
 TickVault is a minimal, elegant, and offline-first syllabus tracker built with pure HTML and CSS. No frameworks, no dependencies — just a blazing-fast PWA that helps you stay on top of your study goals.
 
-![TickVault Screenshot](https://via.placeholder.com/800x400?text=TickVault+Preview)
 
 ---
 
